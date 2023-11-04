@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>pie chart</title>
+  <link rel="stylesheet" href="./RJ3.css">
+  <style>
+    /* Add these styles to resize and center the container */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+    }
+    
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .pie {
+      width: 500px;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+<script src="https://code.highcharts.com/js/highcharts.js"></script>
+<div class='pie'>
+  <div id="container"></div>
+</div>
+<!-- partial -->
+<button class="button" onclick="window.location.href='RJ.html'">BACK</button>
+
+<script src="./RJ3.js"></script>
+
+</body>
+</html>
