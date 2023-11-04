@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>React App</title>
+    <style>
+      .container {
+          text-align: center;
+      }
+
+      button {
+          padding: 8px 16px;
+          border: none;
+          border-radius: 4px;
+          background-color: #3D405B;
+          color: #ffffff;
+          cursor: pointer;
+          font-size: large;
+      }
+
+      button:hover {
+          opacity: 0.8;
+          cursor: pointer;
+      }
+
+      .button-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+      }
+
+      @media (max-width: 768px) {
+         .button-container {
+             flex-direction: column;
+             align-items: center;
+         }
+
+         button {
+             margin-top: 10px;
+             width: auto;
+         }
+      }
+
+      @media (min-width: 769px) {
+         /* Styles for larger screens (PC) */
+         .button-container {
+             justify-content: space-around; /* Adjust alignment for PC screens */
+             padding: 20px; /* Add some padding for PC screens */
+         }
+
+         .container {
+             margin-right: 20px; /* Add spacing between the two sections on PC screens */
+         }
+      }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <div class="button-container">
+        <div class="container">
+            <h1>Scan here</h1><br>
+            <!-- <button onclick="enrollNewUser()" title="Enroll a new user on this FACEIO application">Enroll New User</button> -->
+            <button onclick="authenticateUser()" title="Authenticate a previously enrolled user on this application">Authenticate User</button>
+        </div>
+    
+        <div style="display: flex; flex-direction: column; align-items: center; ">
+            <h1>Scan QR</h1><br>
+            <img style="height: 205px;" src="Localhost_3003.jpg" alt="">
+            <button id="redirectButton" style="margin-top: 10px;">Authenticated</button>
+        </div>
+    </div>
+    
+    <div id="faceio-modal"></div>
+    <script src="https://cdn.faceio.net/fio.js"></script>
+    <script type="text/javascript">
+    // Instantiate fio.js with your application Public ID and API Key
+    const faceio = new faceIO("fioa3397", "820475c438baba070316a3b26d4c1134");
+
+    let timer;
+
+    function enrollNewUser() {
+          // Start the facial enrollment process
+          faceio.enroll({
+              "locale": "auto", // Default user locale
+              "payload": {
+                  /* The payload we want to associate with this user
+                  * which is forwarded back to us upon future
+                  * authentication of this particular user.*/
+                  "whoami": 123456, // Example of dummy ID linked to this particular user
+                  "email": "john.doe@example.com"
+              }
+          }).then(userInfo => {
+              // User Successfully Enrolled!
+              alert(
+                  `User Successfully Enrolled! Details:
+                  Unique Facial ID: ${userInfo.facialId}
+                  Enrollment Date: ${userInfo.timestamp}
+                  Gender: ${userInfo.details.gender}
+                  Age Approximation: ${userInfo.details.age}`
+              );
+              console.log(userInfo);
+              // Redirect to another.html
+              window.location.href = "another.html";
+          }).catch(errCode => {
+              // handle enrollment failure. Visit:
+              // https://faceio.net/integration-guide#error-codes
+              // for the list of all possible error codes
+          });
+      }
+
+      function authenticateUser() {
+          // Authenticate a previously enrolled user
+          faceio.authenticate({
+              "locale": "auto" // Default user locale
+          }).then(userData => {
+              console.log("Success, user identified");
+              console.log("Linked facial Id: " + userData.facialId);
+              console.log("Payload: " + JSON.stringify(userData.payload));
+              // Redirect to profile_user.php
+              window.location.href = "http://localhost/Block_Vote/login_temp/profile_user_1.php";
+          }).catch(errCode => {
+              // handle authentication failure. Visit:
+              // https://faceio.net/integration-guide#error-codes
+              // for the list of all possible error codes
+          });
+      }
+
+    // Function to show an error popup
+    function showErrorPopup() {
+        alert("Error: Button clicked before 20 seconds.");
+    }
+
+    // Function to redirect after 20 seconds
+    function redirectToPage() {
+        window.location.href = "http://localhost/Block_Vote/login_temp/profile_user_1.php";
+    }
+
+    document.getElementById("redirectButton").addEventListener("click", function () {
+        if (timer) {
+            clearTimeout(timer); // Clear the previous timer if it exists
+        }
+        // Start a new timer for 20 seconds
+        timer = setTimeout(redirectToPage, 2000); // 20,000 milliseconds = 20 seconds
+        // You can also add logic to prevent multiple clicks during the countdown if needed
+    });
+</script>
+</body>
+</html>
