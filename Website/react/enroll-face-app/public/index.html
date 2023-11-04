@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+
+    <style>
+      .container {
+          text-align: center;
+      }
+
+      button {
+          height: 60px;
+          width: 150px;
+          padding: 8px 16px;
+          border: none;
+          border-radius: 4px;
+          background-color: #3D405B;
+          color: #ffffff;
+          cursor: pointer;
+          margin-right: 10px;
+          font-size: large;
+      }
+
+      button:hover {
+          opacity: 0.8;
+          cursor: pointer;
+      }
+
+      .button-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+      }
+
+  </style>
+  </head>
+  <body>
+    <!-- <div id="root"></div> -->
+    <div class="button-container">
+        <div class="container">
+            <h1>Face Login</h1><br>
+            <button onclick="enrollNewUser()" title="Enroll a new user on this FACEIO application">Enroll New User</button>
+            <!-- <button onclick="authenticateUser()" title="Authenticate a previously enrolled user on this application">Authenticate User</button> -->
+        </div>
+    </div>
+    <div id="faceio-modal"></div>
+    <script src="https://cdn.faceio.net/fio.js"></script>
+    <script type="text/javascript">
+        // Instantiate fio.js with your application Public ID
+        const faceio = new faceIO("fioa3397", "820475c438baba070316a3b26d4c1134");
+
+        function enrollNewUser() {
+            // Start the facial enrollment process
+            faceio.enroll({
+                "locale": "auto", // Default user locale
+                "payload": {
+                    /* The payload we want to associate with this user
+                    * which is forwarded back to us upon future
+                    * authentication of this particular user.*/
+                    "whoami": 123456, // Example of dummy ID linked to this particular user
+                    "email": "john.doe@example.com"
+                }
+            }).then(userInfo => {
+                // User Successfully Enrolled!
+                alert(
+                    `User Successfully Enrolled! Details:
+                    Unique Facial ID: ${userInfo.facialId}
+                    Enrollment Date: ${userInfo.timestamp}
+                    Gender: ${userInfo.details.gender}
+                    Age Approximation: ${userInfo.details.age}`
+                );
+                console.log(userInfo);
+                // Redirect to another.html
+                window.location.href = "register_process.php";
+            }).catch(errCode => {
+                // handle enrollment failure. Visit:
+                // https://faceio.net/integration-guide#error-codes
+                // for the list of all possible error codes
+            });
+        }
+
+        function authenticateUser() {
+            // Authenticate a previously enrolled user
+            faceio.authenticate({
+                "locale": "auto" // Default user locale
+            }).then(userData => {
+                console.log("Success, user identified");
+                console.log("Linked facial Id: " + userData.facialId);
+                console.log("Payload: " + JSON.stringify(userData.payload));
+                // Redirect to profile_user.php
+                window.location.href = "http://localhost/Block_Vote/login_temp/profile_user_1.php";
+            }).catch(errCode => {
+                // handle authentication failure. Visit:
+                // https://faceio.net/integration-guide#error-codes
+                // for the list of all possible error codes
+            });
+        }
+    </script>
+</body>
+</html>
