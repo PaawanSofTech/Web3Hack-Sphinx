@@ -1,0 +1,115 @@
+    /* Add your CSS styles here */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    button1 {
+      background-color: #4CAF50;
+      color: #fff;
+      height: 5px;
+      padding: 6px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16x;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button1:hover {
+      background-color: #45a049;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+      width: 520px; /* Adjust the desired length */
+      box-sizing: border-box;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #4CAF50;
+    }
+
+    input[type="text"]::placeholder {
+      color: #999;
+      font-style: italic;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    
+    .chat-container {
+        float: right;
+        height: 500px;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      
+    
+    .chat-header {
+      padding: 15px;
+      background-color: #4CAF50;
+      color: #fff;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+    
+    .chat-footer {
+        margin-bottom: 10px;
+    }
+
+    .chat-body {
+      padding: 15px;
+      height: 500px;
+      min-height: 200px;
+      max-height: 400px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+    
+    .chat-message {
+      margin-bottom: 10px;
+    }
+    
+    .user-message {
+      text-align: right;
+    }
+    
+    .bot-message {
+      text-align: left;
+    }
+
+    .faq-options {
+     list-style-type: none;
+     margin-top: 10px;
+     padding: 0;
+     cursor: pointer;
+     transition: background-color 0.3s;
+    }
+
+    .faq-options:hover {
+      background-color: #FFFFFF;
+    }
+    
+    .message-text {
+      display: inline-block;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .message-text:hover{
+        background-color: #45a049;
+        color: #ffff;
+    }

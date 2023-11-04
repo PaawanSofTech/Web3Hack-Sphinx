@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FAQ Chatbot</title>
+  <link rel="stylesheet" href="./chat.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h3>FAQ Chatbot</h3>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+        <div class="chat-message bot-message">
+          <div class="message-text">Welcome! How can I assist you today?</div>
+
+          <br>
+
+            <h1 style="text-align: center; font-style: italic; color: #4CAF50; margin-top: 20px;">FAQs</h1>
+          <ul class="faq-options" style="text-align: center;" id="faqOptions">
+            <div class="message-text" style="margin-top: 5px;"><li class="faq-option" onclick="selectFAQOption(0)">How to give your vote on CryptoVote?</li></div>
+            <br>
+            <div class="message-text" style="margin-top: 5px;"><li class="faq-option" onclick="selectFAQOption(1)">Why voting on Blockchain is secure?</li></div>
+            <br>
+            <div class="message-text" style="margin-top: 5px;"><li class="faq-option" onclick="selectFAQOption(2)">Who can access my vote?</li></div>
+          </ul>
+          <br>
+        </div>
+      </div>
+
+    <div class="chat-footer">
+      <input type="text" id="userInput" placeholder="Type your message here..." autocomplete="off">
+      <button1 onclick="sendMessage()">Send</button1>
+    </div>
+  </div>
+
+<script src="./chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FAQ Chatbot</title>
+    <link rel="stylesheet" href="./chat.css">
+    <link rel="stylesheet"
+      href="https://cdn.materialdesignicons.com/5.9.55/css/materialdesignicons.min.css">
+    <style>
+    /* Additional styles for chat button */
+    .chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+    font-size: large;
+    display: flex;
+    align-items: center;
+}
+
+
+
+    .chat-container.active {
+      display: block;
+    }
+
+    .chat-container {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      width: 450px;
+      height: 500px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      background-color: #ffffff;
+      z-index: 9999;
+    }
+
+    .icon-large {
+    font-size: 30px; /* Adjust the size as needed */
+    }
+  </style>
+  </head>
+  <body>
+    <button class="chat-button" onclick="toggleChatbot()">
+      <i class="mdi mdi-face-agent icon-large"></i>
+    </button>
+
+    <div class="chat-container" id="chatContainer">
+      <div class="chat-header">
+        <h3>FAQ Chatbot</h3>
+      </div>
+
+      <div class="chat-body" id="chatBody">
+        <div class="chat-message bot-message">
+          <div class="message-text">Welcome! How can I assist you today?</div>
+          <br>
+          <h1
+            style="text-align: center; font-style: italic; color: #4CAF50; margin-top: 20px;">FAQs</h1>
+          <ul class="faq-options" style="text-align: center;" id="faqOptions">
+            <div class="message-text" style="margin-top: 5px;"><li
+                class="faq-option" onclick="selectFAQOption(0)">How to give your
+                vote on CryptoVote?</li></div>
+            <br>
+            <div class="message-text" style="margin-top: 5px;"><li
+                class="faq-option" onclick="selectFAQOption(1)">Why voting on
+                Blockchain is secure?</li></div>
+            <br>
+            <div class="message-text" style="margin-top: 5px;"><li
+                class="faq-option" onclick="selectFAQOption(2)">Who can access
+                my vote?</li></div>
+          </ul>
+          <br>
+        </div>
+      </div>
+
+      <div class="chat-footer">
+        <input
+          style="width: 80%; padding: 5px; margin-left: 5px; text-align: center;"
+          type="text" id="userInput" placeholder="Type your message here..."
+          autocomplete="off">
+        <button1 onclick="sendMessage()">Send</button1>
+      </div>
+
+    </div>
+
+    <script src="./chat.js"></script>
+    <script>
+    function toggleChatbot() {
+      var chatContainer = document.getElementById("chatContainer");
+      chatContainer.classList.toggle("active");
+    }
+  </script>
+  </body>
+</html>

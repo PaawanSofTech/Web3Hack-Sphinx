@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Election Commision of India</title>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+	<link rel="stylesheet" href="css/nav.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<link rel="stylesheet" href="css/slider.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;display=swap'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css'>
+	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="./css/news.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest">
+	<link rel="stylesheet" href="css/footer.css">
+	<script type="text/javascript"
+		src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+	<style>
+		.navbar .language-button {
+			padding: 8px 16px;
+			border: none;
+			border-radius: 4px;
+			background-color: #4CAF50;
+			color: #ffffff;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+
+		.slider {
+			position: relative;
+			width: 100%;
+			height: 800px;
+			overflow: hidden;
+		}
+
+		.slide {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			transition: opacity 1s ease-in-out;
+		}
+
+		.slide.active {
+			opacity: 1;
+		}
+	</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="./ballot.css">
+
+<link rel="stylesheet" href="./chat.css">
+    <link rel="stylesheet"
+      href="https://cdn.materialdesignicons.com/5.9.55/css/materialdesignicons.min.css">
+    <style>
+    /* Additional styles for chat button */
+    .chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+    font-size: large;
+    display: flex;
+    align-items: center;
+}
+
+
+
+    .chat-container.active {
+      display: block;
+	  border: none;
+	  cursor: pointer;
+    }
+
+    .chat-container {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      width: 450px;
+      height: 500px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      background-color: #ffffff;
+      z-index: 9999;
+    }
+
+    .icon-large {
+    font-size: 30px; /* Adjust the size as needed */
+    }
+  </style>
+  
+</head>
+<body>
+
+  <button class="chat-button" style="height: 60px;" onclick="toggleChatbot()">
+		<i class="mdi mdi-face-agent mdi-48px"></i>
+		<h2 style="color: #ffffff; size: 50px; padding-left: 5px; padding-right: 5px;">Support</h2>
+	</button>
+  
+	  <div class="chat-container" id="chatContainer">
+		<div class="chat-header">
+		  <h3>FAQ Chatbot</h3>
+		</div>
+  
+		<div class="chat-body" id="chatBody">
+		  <div class="chat-message bot-message">
+			<div class="message-text">Welcome! How can I assist you today?</div>
+			<br>
+			<h1
+			  style="text-align: center; font-style: italic; color: #4CAF50; margin-top: 20px;">FAQs</h1>
+			<ul class="faq-options" style="text-align: center;" id="faqOptions">
+			  <div class="message-text" style="margin-top: 5px;"><li
+				  class="faq-option" onclick="selectFAQOption(0)">How to give your
+				  vote on CryptoVote?</li></div>
+			  <br>
+			  <div class="message-text" style="margin-top: 5px;"><li
+				  class="faq-option" onclick="selectFAQOption(1)">Why voting on
+				  Blockchain is secure?</li></div>
+			  <br>
+			  <div class="message-text" style="margin-top: 5px;"><li
+				  class="faq-option" onclick="selectFAQOption(2)">Who can access
+				  my vote?</li></div>
+			</ul>
+			<br>
+		  </div>
+		</div>
+  
+		<div class="chat-footer">
+		  <input
+			style="width: 80%; padding: 5px; margin-left: 5px; text-align: center;"
+			type="text" id="userInput" placeholder="Type your message here..."
+			autocomplete="off">
+		  <button1 onclick="sendMessage()">Send</button1>
+		</div>
+  
+	  </div>
+  
+	  <script src="./chat.js"></script>
+	  <script>
+	  function toggleChatbot() {
+		var chatContainer = document.getElementById("chatContainer");
+		chatContainer.classList.toggle("active");
+	  }
+	</script>
+
+
+  <div class="navigation-wrap bg-light start-header start-style">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+						<div id="google_translate_element"></div>
+	
+						<button class="language-button" onclick="changeLanguage('hi')">Translate</button>
+	
+						<a class="navbar-brand" href="index.html" target="_blank"><img src="image/logo1.png" alt=""></a>
+	
+						<button class="navbar-toggler" type="button" data-toggle="collapse"
+							data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+							aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+	
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0">
+	
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="index.html">Home</a>
+								</li>
+	
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="news.html">News</a>
+								</li>
+	
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="instructions.html">Instructions</a>
+								</li>
+	
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="ballot.html">Ballot</a>
+								</li>
+	
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="contact.html">Contact</a>
+								</li>
+	
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+										aria-haspopup="true" aria-expanded="false">Login</a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="login_admin.php">Admin Panel</a>
+										<a class="dropdown-item" href="login_user.php">Voter Login</a>
+									</div>
+								</li>
+	
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<main >
+  <div class="shadow p-3 mb-5 bg-white rounded" style="margin: 150px; padding: 100px;">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="media">
+					<img class="mr-3 rounded-circle" src="img/rajasthan.jpg" alt="Generic placeholder image"
+						style="max-width:200px ; margin-left: 100px; margin-top: 30px; display: inline-flex; background-color: rgb(241, 246, 250);">
+				</div>
+			</div>
+			<div class="col-sm-8 " style="text-align: center;">
+				<div class="info" style="text-align: left;  padding-top: 10px;">
+					<h2 style="font-size: 50px;">RAJASTHAN STATE ELECTION 2023</h2><br>
+					<h3 style="padding-bottom: 20px;font-size: 20px;">DATE - 20 MAY 2023</h3>
+					<div class="form-group">
+						<div class="container">
+							<a href="login_user.html">
+								<button class="btn btn-success btn-lg float-right" style="width: 600px;" type="button">
+									VOTE
+								</button>
+							</a>
+						</div>
+					</div>
+
+					</span>
+				</div>
+			</div>
+
+		</div>
+	</div>
+  <div class="page-content">
+  <div class="card">
+    <div class="content">
+      <h2 class="title">Rajasthan legislative assembly election(2023) </h2>
+      <p class="copy">Election Date : 20 may 2023</p>
+      <button class="btn">VOTE</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="content">
+      <h2 class="title">Andhra Pradesh assembly Election(2024)</h2>
+      <p class="copy">Election Date : 18 june 2024</p>
+      <button class="btn">Upcoming Event</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="content">
+      <h2 class="title">Karnataka Legislative Assembly election(2024)</h2>
+      <p class="copy">Election Date :10 may 2024 </p>
+      <button class="btn">Upcoming Event</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="content">
+      <h2 class="title">Maharashatra state election(2024)</h2>
+      <p class="copy">Election Date : 27 nov 2024</p>
+      <button class="btn">Upcoming Event</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="content">
+      <h2 class="title">Arunachal Pradesh state election(2024)</h2>
+      <p class="copy">Election Date : 1 june 2024</p>
+      <button class="btn">Upcoming event</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="content">
+      <h2 class="title">Assam state election(2024)</h2>
+      <p class="copy">Election Date : 23 may 2024</p>
+      <button class="btn">Upcoming event</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="content">
+      <h2 class="title">	Bihar state election (2024)</h2>
+      <p class="copy">Election Date : 19 nov 2024</p>
+      <button class="btn">Upcoming event</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="content">
+      <h2 class="title">Haryana state election(2024)</h2>
+      <p class="copy">Election Date : 26 oct 2024</p>
+      <button class="btn">Upcoming event</button>
+    </div>
+  </div></div>
+  <footer class="footer-section" style="font-size: 20px;">
+    <div class="container">
+        <div class="footer-cta pt-5 pb-5">
+            <div class="row">
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="cta-text">
+                            <h4>Find us</h4>
+                            <span style="text-decoration : none;  color : grey;"><a href="https://www.google.com/maps/place/Poornima+Institute+of+Engineering+and+Technology/@26.7677794,75.8503812,17z/data=!3m1!4b1!4m6!3m5!1s0x396dc91e898380fd:0xeee859ae1f1b64b0!8m2!3d26.7677794!4d75.8503812!16s%2Fg%2F11_rvj8nc?entry=ttu"
+                                    target="_blank" style="text-decoration : none;  color : grey;" > ISI - 2, Poornima Marg, Sitapura,
+                                Jaipur,
+                                Rajasthan 302022</a></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fas fa-phone"></i>
+                        <div class="cta-text">
+                          <h4>Call us</h4>
+                          <span><a href="tel:+91 9928329875" class="cta-text" style="text-decoration : none;  color : grey;">+91 7976645581</a></span><br>
+                          <span><a href="tel:+91 9928329875" class="cta-text" style="text-decoration : none;  color : grey;">+91 9928329875</a></span><br>
+                          <span><a href="tel:+91 9928329875" class="cta-text" style="text-decoration : none;  color : grey;">+91 8529482153</a></span><br>
+                          <span><a href="tel:+91 9928329875" class="cta-text" style="text-decoration : none;  color : grey;">+91 8890919295</a></span><br>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="far fa-envelope-open"></i>
+                        <div class="cta-text">
+                            <h4>Mail us</h4>
+                            <span><a href="mailto:electioncommision4@gmail.com"
+              class="cta-text" style="text-decoration : none;  color : grey;">electioncommision4@gmail.com</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content pt-5 pb-5">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 mb-50">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <a href="index.html"><img src="img/favicon.jpg" class="img-fluid"
+                                    alt="logo"></a>
+                        </div>
+                        <div class="footer-text">
+                            <p></p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                    <div class="footer-widget">
+                        <div class="footer-widget-heading">
+                            <h3>Useful Links</h3>
+                        </div>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="news.html">News</a></li>
+                            <li><a href="instruction.html">Instruction</a></li>
+                            <li><a href="ballot.html">Ballot</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                    <div class="footer-widget">
+                        <div class="footer-widget-heading">
+                            <h3>Subscribe</h3>
+                        </div>
+                        <div class="footer-text mb-25">
+                            <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                        </div>
+                        <div class="subscribe-form">
+                            <form action="#">
+                                <input type="text" placeholder="Email Address">
+                                <button><i class="fab fa-telegram-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                    <div class="copyright-text">
+                        <p>Copyright &copy; 2023, All Right Reserved <a
+                                href="error.html">The Creators</a></p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="news.html">News</a></li>
+                            <li><a href="instructions.html">Instruction</a></li>
+                            <li><a href="ballot.html">Ballot</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</main>
+<!-- partial -->
+  	
+</body>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+<script src="js/script.js"></script>
+<script src="js/contact.js"></script>
+<script type="text/javascript">
+	function googleTranslateElementInit() {
+		new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+	}
+
+	function changeLanguage(language) {
+		var select = document.querySelector('.goog-te-combo');
+		select.dispatchEvent(new Event('change'));
+	}
+</script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<!-- <script src="js/slider.js"></script> -->
+</body>
+</html>
